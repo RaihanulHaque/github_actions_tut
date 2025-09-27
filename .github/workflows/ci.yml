@@ -1,0 +1,27 @@
+name: FastAPI CI  # Name of your workflow
+
+on:  # When to run it
+  push:  # Every time you push code
+    branches: [ main ]  # Only on the main branch
+  pull_request:  # When someone makes a pull request
+    branches: [ main ]
+
+jobs:  # The tasks to run
+  test:  # Job name: "test"
+    runs-on: ubuntu-latest  # Run on a Linux machine provided by GitHub
+
+    steps:  # Step-by-step instructions
+      - uses: actions/checkout@v4  # Step 1: Download your code from GitHub
+
+      - name: Set up Python  # Step 2: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # Use Python 3.11 (change if needed)
+
+      - name: Install dependencies  # Step 3: Install your project's packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests  # Step 4: Run the tests with pytest
+        run: pytest
