@@ -9,7 +9,7 @@ def add_numbers(a: int, b: int) -> int:
 # API 1: Hello World
 @app.get("/")
 def read_root():
-    return {"message": "Hello, World!"}
+    return {"message": "Hello, World! This is Rahi."}
 
 # API 2: Add two numbers
 @app.get("/add/{a}/{b}")
