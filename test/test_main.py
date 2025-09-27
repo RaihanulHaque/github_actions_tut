@@ -1,12 +1,12 @@
 from fastapi.testclient import TestClient
-from main import app, add_numbers
+from github_actions_tut.main import app, add_numbers
 
 client = TestClient(app)
 
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200  # Checks if API responds OK
-    assert response.json() == {"message": "Hello, World!"}  # Checks the message
+    assert response.json() == {"message": "Hello, World! This is Rahi."}  # Checks the message
 
 def test_add():
     response = client.get("/add/2/3")
